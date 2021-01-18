@@ -43,3 +43,12 @@ auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin)
 `double condEntropy(std::string, std::string, double);` - 0.030 sekundy.
 
 Przy próbie wykorzystanie -NIXowego `time`, zarówno wall jak i CPU są równe `0.00`, przez domyślną precyzję pomiaru.
+
+## ---------------
+
+Przykładowe wyniki na podstawie plików `control.txt`, `pol.txt`, `ger.txt` oraz `eng.txt`.
+
+`control.txt` - Entropia: 2  
+`pol.txt` - Entropia: 4.86325  
+`ger.txt` - Entropia: 4.54964  
+`eng.txt` - Entropia: 4.38463  
