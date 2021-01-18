@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <streambuf>
+#include <chrono>
 
 #include <map>
 #include <string>
@@ -18,15 +19,20 @@ int main(int argc, char** argv) {
     // Zwykłe czytanie pliku do stringa
     std::ifstream textFile(argv[1]);
     std::string testString((std::istreambuf_iterator<char>(textFile)), std::istreambuf_iterator<char>());
+    // auto begin = std::chrono::high_resolution_clock::now();
 
     // Wypisywanie wyników na ekranie
     std::cout << "Entropy: " << ([&testString, &argc, &argv]() {
         return (argc > 2 && !(static_cast<std::string>("-d").compare(argv[2]))) 
             ? entropy(testString, true) : entropy(testString, false);
         })() << std::endl;
+
     std::cout << "Joint entropy: " << jointEntropy(testString, "abcd") << std::endl;
     // std::cout << "Cond entropy: " << condEntropy(testString, "abcd", jointEntropy(testString, "abcd")) << std::endl;
 
+
+    // auto end = std::chrono::high_resolution_clock::now();
+    // auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
     return 0;
 }
 
